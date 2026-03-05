@@ -88,7 +88,7 @@ const App: React.FC = () => {
       clickLocations: [...prev.clickLocations, { location, time: new Date().toLocaleString() }]
     }));
   };
-
+// Will this work?
   return (
     <div className="dashboard">
       <SnakeAnimation />
