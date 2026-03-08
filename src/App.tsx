@@ -25,6 +25,7 @@ const App: React.FC = () => {
   });
 
   const [currentSessionTime, setCurrentSessionTime] = useState<number>(0);
+  const [showModal, setShowModal] = useState<boolean>(false);
 
   const formatTime = (totalSeconds: number): string => {
     const hours = Math.floor(totalSeconds / 3600);
@@ -141,11 +142,34 @@ const App: React.FC = () => {
             <p>Welcome glad you found your way here. I'm Luke, a full stack developer who has a passion for unique and some what obscure projects.</p>
             <p>I was thinking, what I could do diffrently to show my unique skill set well why not design an interactive dashboard that tracks all activty in real time? </p>
             <p>Have fun clicking and watching the colours shift and chnage. Also feel free to connect or pop me a message on my linkedin.</p>
-            <button className="cta-button" onClick={(e) => handleClick(e, 'cta-button')}>
-              Learn More
+            <button className="cta-button" onClick={(e) => { handleClick(e, 'read-more'); setShowModal(true); }}>
+              Read More
             </button>
           </div>
         </div>
+
+        {showModal && (
+          <div className="modal-overlay" onClick={() => setShowModal(false)}>
+            <div className="modal" onClick={(e) => e.stopPropagation()}>
+              <h3>Hey, you clicked!</h3>
+              <p>Now that I got your attention, please contact me on LinkedIn if you want to find out more...</p>
+              <div className="modal-actions">
+                <a
+                  className="modal-linkedin-btn"
+                  href="https://linkedin.com/in/luke-janse-van-rensburg-b591911b6"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => handleClick(e, 'modal-linkedin')}
+                >
+                  💼 Connect on LinkedIn
+                </a>
+                <button className="modal-close-btn" onClick={() => setShowModal(false)}>
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
 
         <div className="activity-feed">
           <h3>Click Activity</h3>
