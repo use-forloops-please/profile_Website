@@ -219,11 +219,10 @@ section {
 
 .about-image {
   width: 100%;
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 5 / 6;
   object-fit: cover;
   object-position: top;
-  border-radius: 16px;
-  filter: grayscale(30%);
+  border-radius: 30px 18px 24px 16px / 20px 28px 16px 24px;
 }
 
 /* ─── Skills ──────────────────────────────────────────────────────── */
@@ -442,6 +441,7 @@ section {
   .about-image {
     max-width: 280px;
     aspect-ratio: 1 / 1;
+    height: 50px;
   }
 
   .skills-grid {
