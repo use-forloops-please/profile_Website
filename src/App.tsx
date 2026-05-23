@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 
 const skills = {
@@ -9,37 +9,72 @@ const skills = {
 
 const projects = [
   {
-    name: 'Profile Website',
+    name: 'Rooted Farmers Market API',
     status: 'Live',
-    desc: 'This site — a clean single-page portfolio built with React and TypeScript, deployed to Cloudflare Pages.',
-    tags: ['React', 'TypeScript', 'Vite', 'Cloudflare'],
-    href: 'https://github.com/use-forloops-please',
+    desc: 'REST API powering a farmers market platform — handles product listings, vendors, and orders.',
+    tags: ['TypeScript', 'Node.js', 'REST API'],
+    href: 'https://github.com/use-forloops-please/Rooted-farmers-market-api',
   },
   {
-    name: 'Interactive Dashboard',
-    status: 'Archive',
-    desc: 'An earlier version of this portfolio that tracked real-time analytics, session time, and click locations using localStorage.',
-    tags: ['React', 'Canvas API', 'CSS Animations'],
-    href: 'https://github.com/use-forloops-please',
-  },
-  {
-    name: 'Obscure Project #1',
+    name: 'Budget App',
     status: 'In Progress',
-    desc: 'A personal side project in the early stages — details coming soon.',
-    tags: ['TypeScript', 'Node.js'],
-    href: 'https://github.com/use-forloops-please',
+    desc: 'Personal finance tool for tracking expenses and planning ahead. Built to scratch my own itch.',
+    tags: ['JavaScript', 'React'],
+    href: 'https://github.com/use-forloops-please/Budgetapp',
   },
   {
-    name: 'Obscure Project #2',
+    name: 'Soil Health ML Model',
     status: 'Concept',
-    desc: 'An idea that uses WebGL for something probably unnecessary but very enjoyable to build.',
-    tags: ['WebGL', 'Three.js'],
-    href: 'https://github.com/use-forloops-please',
+    desc: 'Machine learning model that scans soil composition and returns a plain-language health summary.',
+    tags: ['Python', 'Machine Learning'],
+    href: 'https://github.com/use-forloops-please/Soil_Health',
+  },
+  {
+    name: 'Customer Chat Bot',
+    status: 'Live',
+    desc: 'Automated chatbot built to handle common customer queries and reduce support load.',
+    tags: ['Python', 'NLP'],
+    href: 'https://github.com/use-forloops-please/Chat_bot',
+  },
+  {
+    name: 'Redemption Food',
+    status: 'Live',
+    desc: 'Frontend website for Redemption Food — a food-focused brand with a custom HTML/CSS layout.',
+    tags: ['HTML', 'CSS'],
+    href: 'https://github.com/use-forloops-please/Redemtion-Food',
+  },
+  {
+    name: 'Export to Excel',
+    status: 'Live',
+    desc: 'Utility that takes raw data inputs and generates formatted Excel files for reporting.',
+    tags: ['Data', 'Automation'],
+    href: 'https://github.com/use-forloops-please/Export-to-excel',
   },
 ];
 
-const App: React.FC = () => (
+const App: React.FC = () => {
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  useEffect(() => {
+    const onScroll = () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      setScrollProgress(docHeight > 0 ? scrollTop / docHeight : 0);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  const lineOpacity = scrollProgress > 0.85 ? 1 - (scrollProgress - 0.85) / 0.15 : 1;
+
+  return (
   <div className="page">
+    <div className="scroll-line-track">
+      <div
+        className="scroll-line-fill"
+        style={{ height: `${scrollProgress * 100}%`, opacity: lineOpacity }}
+      />
+    </div>
     {/* Nav */}
     <nav className="nav">
       <div className="nav-inner">
@@ -58,16 +93,15 @@ const App: React.FC = () => (
       <div className="container hero-inner">
         <div className="hero-eyebrow">
           <img
-            src="/Neutral Pink Modern Circle Shape LinkedIn Profile Picture (5).png"
+            src="/WS-33.jpg"
             alt="Luke Janse van Rensburg"
             className="hero-avatar"
           />
-          <span className="hero-role">Frontend Developer · Cape Town</span>
+          <span className="hero-role">Full Stack Developer · Cape Town</span>
         </div>
         <h1 className="hero-name">Luke Janse<br />van Rensburg</h1>
         <p className="hero-tagline">
-          I build clean interfaces and quietly strange projects. Interested in the
-          overlap between design precision and frontend craft.
+          Lets build something! If you can think of it I can build it.
         </p>
         <div className="hero-cta">
           <a href="#work">→ View Work</a>
@@ -92,22 +126,20 @@ const App: React.FC = () => (
         <div className="about-grid">
           <div className="about-bio">
             <p>
-              I'm a full-stack developer with a focus on the frontend — the layer where
-              design decisions become real and the details either hold or fall apart.
+              I'm a full-stack developer with a pasion for creating intuitive and engaging user experiences.
             </p>
             <p>
               I'm drawn to projects that sit slightly outside the ordinary: things that
-              have an unusual constraint, a weird interaction model, or an ambition that's
-              harder than it looks. I find those more interesting to build than safe ones.
+              have an unusual constraints and that challenge what we think of as possible. 
+              I love learning new technologies and applying them in creative ways.
             </p>
             <p>
-              When I'm not writing code I'm thinking about why certain interfaces feel
-              right and others don't — the invisible work that goes into making something
-              simple look easy.
+              I started my career as software developer in 2024, and since then I've had the opportunity to work on a wide range of projects, 
+              spanning from small simple dashboards to larger enterprise software. Each project has taught me something new and has helped me grow as a developer. I'm always looking for the next challenge and the next opportunity to learn and create.
             </p>
           </div>
           <img
-            src="/Neutral Pink Modern Circle Shape LinkedIn Profile Picture (5).png"
+            src="/WS-33.jpg"
             alt="Luke Janse van Rensburg"
             className="about-image"
           />
@@ -141,7 +173,17 @@ const App: React.FC = () => (
     {/* Work */}
     <section id="work">
       <div className="container">
-        <span className="section-label">Work</span>
+        <div className="section-header">
+          <span className="section-label">Work</span>
+          <a
+            href="https://github.com/use-forloops-please?tab=repositories"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="section-link"
+          >
+            View all on GitHub →
+          </a>
+        </div>
         <div className="work-grid">
           {projects.map(project => (
             <div key={project.name} className="project-card">
@@ -205,11 +247,12 @@ const App: React.FC = () => (
     {/* Footer */}
     <footer className="site-footer">
       <div className="footer-inner">
-        <span className="footer-copy">© 2025 Luke Janse van Rensburg</span>
+        <span className="footer-copy">© 2026 Luke Janse van Rensburg</span>
         <span className="footer-copy">Built with React · Deployed on Cloudflare</span>
       </div>
     </footer>
   </div>
-);
+  );
+};
 
 export default App;

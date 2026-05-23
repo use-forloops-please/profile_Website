@@ -1,3 +1,26 @@
+/* ─── Scroll Line ─────────────────────────────────────────────────── */
+
+.scroll-line-track {
+  position: fixed;
+  left: 28px;
+  top: var(--nav-height);
+  bottom: 0;
+  width: 1px;
+  background: var(--border);
+  z-index: 40;
+  pointer-events: none;
+}
+
+.scroll-line-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: var(--text-muted);
+  transition: height 0.1s linear, opacity 0.3s ease;
+  box-shadow: 0 0 6px 1px var(--text-muted);
+}
+
 /* ─── Navigation ─────────────────────────────────────────────────── */
 
 .nav {
@@ -74,6 +97,28 @@ section {
   margin-bottom: 3rem;
 }
 
+.section-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 3rem;
+}
+
+.section-header .section-label {
+  margin-bottom: 0;
+}
+
+.section-link {
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--text-muted);
+  transition: color var(--transition);
+}
+
+.section-link:hover {
+  color: var(--text-primary);
+}
+
 /* ─── Hero ────────────────────────────────────────────────────────── */
 
 .hero {
@@ -95,10 +140,11 @@ section {
 }
 
 .hero-avatar {
-  width: 40px;
-  height: 40px;
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
   object-fit: cover;
+  object-position: top;
   filter: grayscale(20%);
 }
 
@@ -176,7 +222,7 @@ section {
   aspect-ratio: 3 / 4;
   object-fit: cover;
   object-position: top;
-  border-radius: 8px;
+  border-radius: 16px;
   filter: grayscale(30%);
 }
 
