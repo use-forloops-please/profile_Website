@@ -101,7 +101,7 @@ const App: React.FC = () => {
         </div>
         <h1 className="hero-name">Luke Janse<br />van Rensburg</h1>
         <p className="hero-tagline">
-          Lets build something! If you can think of it I can build it.
+          Lets build something!
         </p>
         <div className="hero-cta">
           <a href="#work">→ View Work</a>
@@ -126,10 +126,10 @@ const App: React.FC = () => {
         <div className="about-grid">
           <div className="about-bio">
             <p>
-              I'm a full-stack developer with a pasion for creating intuitive and engaging user experiences.
+              I'm a fullstack developer with a pasion for creating intuitive and engaging user experiences.
             </p>
             <p>
-              I'm drawn to projects that sit slightly outside the ordinary: things that
+              I'm drawn to projects that sit slightly outside the ordinary,things that
               have an unusual constraints and that challenge what we think of as possible. 
               I love learning new technologies and applying them in creative ways.
             </p>
