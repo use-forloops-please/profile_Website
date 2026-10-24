@@ -7,7 +7,7 @@ const EMAIL = 'luke1time18@gmail.com';
 
 const skills = {
   Frontend: ['React.js', 'TypeScript', 'HTML / CSS', 'Vite'],
-  Backend: ['C# / .NET', 'REST APIs', 'Node.js', 'VB.NET (legacy)'],
+  Backend: ['C# / .NET', 'REST APIs', 'Node.js', 'VB.NET'],
   Database: ['SQL Server', 'Stored Procedures', 'Dapper', 'Multi-database Design'],
   DevOps: ['Docker', 'Kubernetes', 'Git', 'Cloudflare Workers'],
   Data: ['Data Analysis', 'ExcelJS', 'Python', 'Web Crawlers'],
@@ -18,7 +18,7 @@ const experience = [
     role: 'Software Developer',
     company: 'Newsclip Media Monitoring',
     dates: 'July 2024 – Present',
-    desc: 'Working on a large-scale modernisation of a legacy VB.NET media platform into a React/TypeScript + C#/.NET + SQL Server stack. Spans frontend component development, REST API design, multi-database stored procedures, Kubernetes/Docker infrastructure, and web crawler systems for media ingestion.',
+    desc: 'Working on a large-scale modernisation of a legacy platforms into a React/TypeScript + C#/.NET + SQL Server stack. Spans frontend component development, REST API design, clean database design, Kubernetes/Docker infrastructure, and system managment.',
   },
   {
     role: 'Software Developer',
@@ -112,8 +112,8 @@ const App: React.FC = () => {
         <span className="section-label">Profile</span>
         <p className="profile-text">
           Motivated full-stack software engineer with hands-on experience building and
-          modernising enterprise-scale media management platforms. Comfortable across the
-          full stack — React/TypeScript frontends, C#/.NET APIs, and SQL Server backends —
+          modernising enterprise scale management platforms. Comfortable across the
+          full stack React/TypeScript frontends, C#/.NET APIs, and SQL Server backends
           with a growing focus on clean architecture, legacy system migration, and reliable
           delivery of production features.
         </p>
@@ -220,7 +220,7 @@ const App: React.FC = () => {
     <footer className="site-footer">
       <div className="footer-inner">
         <span className="footer-copy">© 2026 Luke Janse van Rensburg</span>
-        <span className="footer-copy">Built with React · Deployed on Cloudflare</span>
+        <span className="footer-copy">Build what you love</span>
       </div>
     </footer>
   </div>
