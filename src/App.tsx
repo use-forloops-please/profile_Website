@@ -1,55 +1,48 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 
+const LINKEDIN = 'https://linkedin.com/in/luke-janse-van-rensburg-b591911b6';
+const GITHUB = 'https://github.com/use-forloops-please';
+const EMAIL = 'luke1time18@gmail.com';
+
 const skills = {
-  Frontend: ['React', 'TypeScript', 'CSS / Sass', 'Tailwind', 'Vite', 'HTML5'],
-  Tooling: ['Git', 'Cloudflare Workers', 'Figma', 'VS Code', 'Node.js'],
-  'Currently Learning': ['Three.js', 'WebGL', 'Astro'],
+  Frontend: ['React.js', 'TypeScript', 'HTML / CSS', 'Vite'],
+  Backend: ['C# / .NET', 'REST APIs', 'Node.js', 'VB.NET (legacy)'],
+  Database: ['SQL Server', 'Stored Procedures', 'Dapper', 'Multi-database Design'],
+  DevOps: ['Docker', 'Kubernetes', 'Git', 'Cloudflare Workers'],
+  Data: ['Data Analysis', 'ExcelJS', 'Python', 'Web Crawlers'],
 };
 
-const projects = [
+const experience = [
   {
-    name: 'Rooted Farmers Market API',
-    status: 'Live',
-    desc: 'REST API powering a farmers market platform — handles product listings, vendors, and orders.',
-    tags: ['TypeScript', 'Node.js', 'REST API'],
-    href: 'https://github.com/use-forloops-please/Rooted-farmers-market-api',
+    role: 'Software Developer',
+    company: 'Newsclip Media Monitoring',
+    dates: 'July 2024 – Present',
+    desc: 'Working on a large-scale modernisation of a legacy VB.NET media platform into a React/TypeScript + C#/.NET + SQL Server stack. Spans frontend component development, REST API design, multi-database stored procedures, Kubernetes/Docker infrastructure, and web crawler systems for media ingestion.',
   },
   {
-    name: 'Budget App',
-    status: 'In Progress',
-    desc: 'Personal finance tool for tracking expenses and planning ahead. Built to scratch my own itch.',
-    tags: ['JavaScript', 'React'],
-    href: 'https://github.com/use-forloops-please/Budgetapp',
+    role: 'Software Developer',
+    company: 'digital2DNA',
+    dates: 'Jan 2024 – Jul 2024',
+    desc: 'Contributed to web development projects in an agency environment, gaining commercial experience across frontend and backend technologies.',
   },
   {
-    name: 'Soil Health ML Model',
-    status: 'Concept',
-    desc: 'Machine learning model that scans soil composition and returns a plain-language health summary.',
-    tags: ['Python', 'Machine Learning'],
-    href: 'https://github.com/use-forloops-please/Soil_Health',
+    role: 'Sales & Marketing Associate',
+    company: 'EUROOPTIC AFRICA',
+    dates: 'Feb 2018 – Jul 2023',
+    desc: 'Developed strong communication and business skills over five years, including digital marketing initiatives that complement a technical career path.',
   },
-  {
-    name: 'Customer Chat Bot',
-    status: 'Live',
-    desc: 'Automated chatbot built to handle common customer queries and reduce support load.',
-    tags: ['Python', 'NLP'],
-    href: 'https://github.com/use-forloops-please/Chat_bot',
-  },
-  {
-    name: 'Redemption Food',
-    status: 'Live',
-    desc: 'Frontend website for Redemption Food — a food-focused brand with a custom HTML/CSS layout.',
-    tags: ['HTML', 'CSS'],
-    href: 'https://github.com/use-forloops-please/Redemtion-Food',
-  },
-  {
-    name: 'Export to Excel',
-    status: 'Live',
-    desc: 'Utility that takes raw data inputs and generates formatted Excel files for reporting.',
-    tags: ['Data', 'Automation'],
-    href: 'https://github.com/use-forloops-please/Export-to-excel',
-  },
+];
+
+const education = [
+  { title: 'BSc Computer Software Engineering', org: 'Eduvos', dates: '2021 – 2023' },
+  { title: 'Google Data Analytics Professional Certificate', org: 'Coursera', dates: '2023' },
+  { title: 'Web Design & Multimedia Management', org: 'CTU Training Solutions', dates: '2020' },
+];
+
+const certifications = [
+  { issuer: 'Google', name: 'Data Analytics Professional Certificate (2023)' },
+  { issuer: 'Coursera', name: 'Prepare, Process & Analyze Data' },
 ];
 
 const App: React.FC = () => {
@@ -80,9 +73,10 @@ const App: React.FC = () => {
       <div className="nav-inner">
         <span className="nav-name">Luke Janse van Rensburg</span>
         <div className="nav-links">
-          <a href="#about">About</a>
+          <a href="#profile">Profile</a>
+          <a href="#experience">Experience</a>
           <a href="#skills">Skills</a>
-          <a href="#work">Work</a>
+          <a href="#education">Education</a>
           <a href="#contact">Contact</a>
         </div>
       </div>
@@ -91,27 +85,20 @@ const App: React.FC = () => {
     {/* Hero */}
     <section className="hero">
       <div className="container hero-inner">
-        <div className="hero-eyebrow">
-          <img
-            src="/WS-33.jpg"
-            alt="Luke Janse van Rensburg"
-            className="hero-avatar"
-          />
-          <span className="hero-role">Full Stack Developer · Cape Town</span>
-        </div>
+        <span className="hero-role">Software Engineer · Full-Stack Developer</span>
         <h1 className="hero-name">Luke Janse<br />van Rensburg</h1>
-        <p className="hero-tagline">
-          Lets build something!
-        </p>
+        <ul className="hero-meta">
+          <li>Cape Town, South Africa</li>
+          <li><a href={`mailto:${EMAIL}`}>{EMAIL}</a></li>
+          <li><a href="https://lukejvr.com">lukejvr.com</a></li>
+        </ul>
         <div className="hero-cta">
-          <a href="#work">→ View Work</a>
-          <a
-            href="https://linkedin.com/in/luke-janse-van-rensburg-b591911b6"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="cta-secondary"
-          >
+          <a href="#experience">→ Experience</a>
+          <a href={LINKEDIN} target="_blank" rel="noopener noreferrer" className="cta-secondary">
             → LinkedIn
+          </a>
+          <a href={GITHUB} target="_blank" rel="noopener noreferrer" className="cta-secondary">
+            → GitHub
           </a>
         </div>
       </div>
@@ -119,30 +106,37 @@ const App: React.FC = () => {
 
     <hr className="divider" />
 
-    {/* About */}
-    <section id="about">
+    {/* Profile */}
+    <section id="profile">
       <div className="container">
-        <span className="section-label">About</span>
-        <div className="about-grid">
-          <div className="about-bio">
-            <p>
-              I'm a fullstack developer with a pasion for creating intuitive and engaging user experiences.
-            </p>
-            <p>
-              I'm drawn to projects that sit slightly outside the ordinary,things that
-              have an unusual constraints and that challenge what we think of as possible. 
-              I love learning new technologies and applying them in creative ways.
-            </p>
-            <p>
-              I started my career as software developer in 2024, and since then I've had the opportunity to work on a wide range of projects, 
-              spanning from small simple dashboards to larger enterprise software. Each project has taught me something new and has helped me grow as a developer. I'm always looking for the next challenge and the next opportunity to learn and create.
-            </p>
-          </div>
-          <img
-            src="/WS-33.jpg"
-            alt="Luke Janse van Rensburg"
-            className="about-image"
-          />
+        <span className="section-label">Profile</span>
+        <p className="profile-text">
+          Motivated full-stack software engineer with hands-on experience building and
+          modernising enterprise-scale media management platforms. Comfortable across the
+          full stack — React/TypeScript frontends, C#/.NET APIs, and SQL Server backends —
+          with a growing focus on clean architecture, legacy system migration, and reliable
+          delivery of production features.
+        </p>
+      </div>
+    </section>
+
+    <hr className="divider" />
+
+    {/* Experience */}
+    <section id="experience">
+      <div className="container">
+        <span className="section-label">Experience</span>
+        <div className="timeline">
+          {experience.map(job => (
+            <div key={job.company} className="timeline-item">
+              <span className="timeline-dates">{job.dates}</span>
+              <div>
+                <h3 className="timeline-title">{job.role}</h3>
+                <span className="timeline-org">{job.company}</span>
+                <p className="timeline-desc">{job.desc}</p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
@@ -152,7 +146,7 @@ const App: React.FC = () => {
     {/* Skills */}
     <section id="skills">
       <div className="container">
-        <span className="section-label">Skills</span>
+        <span className="section-label">Technical Skills</span>
         <div className="skills-grid">
           {Object.entries(skills).map(([group, items]) => (
             <div key={group}>
@@ -170,45 +164,35 @@ const App: React.FC = () => {
 
     <hr className="divider" />
 
-    {/* Work */}
-    <section id="work">
+    {/* Education & Certifications */}
+    <section id="education">
       <div className="container">
-        <div className="section-header">
-          <span className="section-label">Work</span>
-          <a
-            href="https://github.com/use-forloops-please?tab=repositories"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="section-link"
-          >
-            View all on GitHub →
-          </a>
-        </div>
-        <div className="work-grid">
-          {projects.map(project => (
-            <div key={project.name} className="project-card">
-              <div className="project-header">
-                <span className="project-name">{project.name}</span>
-                <span className="project-status">{project.status}</span>
-              </div>
-              <p className="project-desc">{project.desc}</p>
-              <div className="project-footer">
-                <div className="project-tags">
-                  {project.tags.map(t => (
-                    <span key={t} className="tag">{t}</span>
-                  ))}
+        <div className="edu-grid">
+          <div>
+            <span className="section-label">Education</span>
+            <div className="timeline">
+              {education.map(item => (
+                <div key={item.title} className="timeline-item">
+                  <span className="timeline-dates">{item.dates}</span>
+                  <div>
+                    <h3 className="timeline-title">{item.title}</h3>
+                    <span className="timeline-org">{item.org}</span>
+                  </div>
                 </div>
-                <a
-                  href={project.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="project-link"
-                >
-                  → View
-                </a>
-              </div>
+              ))}
             </div>
-          ))}
+          </div>
+          <div>
+            <span className="section-label">Certifications</span>
+            <div className="cert-list">
+              {certifications.map(cert => (
+                <div key={cert.name}>
+                  <span className="skill-group-label">{cert.issuer}</span>
+                  <p className="cert-name">{cert.name}</p>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -224,21 +208,9 @@ const App: React.FC = () => {
             Open to opportunities<br />and interesting conversations.
           </p>
           <div className="contact-links">
-            <a href="mailto:luke1time18@gmail.com">Email</a>
-            <a
-              href="https://linkedin.com/in/luke-janse-van-rensburg-b591911b6"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              LinkedIn
-            </a>
-            <a
-              href="https://github.com/use-forloops-please"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              GitHub
-            </a>
+            <a href={`mailto:${EMAIL}`}>Email</a>
+            <a href={LINKEDIN} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href={GITHUB} target="_blank" rel="noopener noreferrer">GitHub</a>
           </div>
         </div>
       </div>
